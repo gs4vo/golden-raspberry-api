@@ -1,12 +1,9 @@
-import express from 'express';
-import { AwardInterval } from '../services/award.js';
+import { Router } from 'express';
+import { ProducersController } from '../controllers/producers.controller.js';
 
-const router = express.Router();
+const router = Router();
+const controller = new ProducersController();
 
-
-router.get('/intervalos', async (req, res) => {
-    const result = await AwardInterval();
-    res.json(result);
-})
+router.get('/intervalos', (req, res) => controller.getIntervals(req, res));
 
 export default router;
